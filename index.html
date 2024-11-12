@@ -8,15 +8,26 @@
 </head>
 <body>
 
-    <header>
-        <h1>Au<span>Shoot</span></h1>
-        <nav>
-            <!-- Dugme za početnu stranicu, kada se klikne, stranica se ponovo učitava -->
-            <button class="nav-btn active" onclick="reloadHome()">Home</button>
-            <!-- Dugme za otvaranje update prozora -->
-            <button class="nav-btn" onclick="openUpdateWindow()">Update</button>
-        </nav>
-    </header>
+   <body>
+    <section id="news" class="news-section">
+        <div class="news-container">
+            <div class="news-item">
+                <img src="logo-hi-rez-removebg-preview.png" alt="News 1" class="news-image">
+                <h3 class="news-title"> Prvo kolo je krenulo -  Statistike uživo! 🔴 </h3>
+                <a href="news1.html"><button class="news-button">Saznaj više</button></a>
+            </div>
+            <div class="news-item">
+                <img src="pobjednici.jpg" alt="News 2" class="news-image">
+                <h3 class="news-title">Peta sezona OSBS Chess Juniors lige gotova!</h3>
+                <a href="news2.html"><button class="news-button2">Saznaj više</button></a>
+            </div>
+            <div class="news-item">
+                <img src="dame.jpeg.jpg" alt="News 3" class="news-image">
+                <h3 class="news-title">Šahovska sekcija kreće uskoro! </h3>
+                <a href="news3.html"><button class="news-button3">Saznaj više</button></a>
+            </div>
+        </div>
+    </section>    
     
     <main>
         <aside>
@@ -25,31 +36,7 @@
             <a href="#" onclick="openNewWindow();">Version 1.1</a> <!-- Link za verziju 1.1 -->
         </aside>
         
-        <script>
-          // Funkcija za ponovno učitavanje stranice kada se klikne Home
-          function reloadHome() {
-              location.reload(); // Ova komanda ponovo učitava trenutnu stranicu
-          }
-
-          // Funkcija za otvaranje novog prozora sa tekstom kada se klikne Update
-          function openUpdateWindow() {
-              // Otvara novi prazan prozor sa dimenzijama 800x600
-              const newWindow = window.open('', '_blank', 'width=800,height=600');
-              // Dodaje sadržaj u novi prozor
-              newWindow.document.write('<h1>Update Information</h1>');
-              newWindow.document.write('<p>This is the latest update of AuShoot!</p>');
-              newWindow.document.body.style.backgroundColor = "white"; // Postavlja boju pozadine
-          }
-
-          // Funkcija za otvaranje novog prozora sa sadržajem verzije 1.1
-          function openNewWindow() {
-              const newWindow = window.open('', '_blank', 'width=800,height=600');
-              newWindow.document.write("<h1>Welcome to the new window!</h1>");
-              newWindow.document.body.style.backgroundColor = "white";
-              newWindow.document.body.addEventListener('click', function() {
-                  alert('Kliknuli ste u novom prozoru!');
-              });
-          }
+        
         </script>
         
         <section>
