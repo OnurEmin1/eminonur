@@ -8,52 +8,39 @@
 </head>
 <body>
 
-       <header>
+    <header>
         <h1>Au<span>Shoot</span></h1>
         <nav>
-            <button class="nav-btn active">Home</button>
-            <button class="nav-btn">Update</button>
+            <!-- Kada kliknete "Home", stranica se ponovo učitava -->
+            <button class="nav-btn active" onclick="reloadHome()">Home</button>
+            <!-- Kada kliknete "Update", otvara se novi prozor sa tekstom -->
+            <button class="nav-btn" onclick="openUpdateWindow()">Update</button>
         </nav>
     </header>
-    
+
     <main>
-        <aside>
-            <a href="#">Version of game's</a>
-            <br> <!-- Dodajte razmak između linkova -->
-            <a href="#" onclick="openNewWindow();">Version 1.1</a> <!-- Link za verziju 1.1 -->
-        </aside>
-        
-        <script>
-          function openNewWindow() {
-            // Otvaranje novog prozora sa praznim sadržajem
-            const newWindow = window.open('', '_blank', 'width=800,height=600');
-            
-            // Pozivanje funkcije koja može manipulisati novim prozorom
-            newWindow.document.write("<h1>Welcome to the new window!</h1>");
-            
-            // Dodatna funkcionalnost
-            // Na primer, možete postaviti pozadinsku boju
-            newWindow.document.body.style.backgroundColor = "white";
-            
-            // Možete dodati i event listener za klikove u tom novom prozoru
-            newWindow.document.body.addEventListener('click', function() {
-              alert('Kliknuli ste u novom prozoru!');
-            });
-          }
-        </script>
-        
         <section>
-            <h2>UPDATE</h2>
-            <p>A new shooting game in which you are a small <br>
-               cube that moves left and right and kills other cubes.<br>
-               <br>
-               <br>
-            </p>
-            <img src="sllika version   1.1.png" alt="Update Image" class="update-image">
+            <h2>Welcome to AuShoot</h2>
+            <p>This is the main page of your game website.</p>
         </section>
     </main>
 
+    <script>
+        // Funkcija za ponovno učitavanje stranice kada se klikne Home
+        function reloadHome() {
+            location.reload(); // Ova komanda ponovo učitava trenutnu stranicu
+        }
+
+        // Funkcija za otvaranje novog prozora sa tekstom kada se klikne Update
+        function openUpdateWindow() {
+            // Otvara novi prazan prozor sa dimenzijama 800x600
+            const newWindow = window.open('', '_blank', 'width=800,height=600');
+            // Dodaje sadržaj u novi prozor
+            newWindow.document.write('<h1>Update Information</h1>');
+            newWindow.document.write('<p>This is the latest update of AuShoot!</p>');
+            newWindow.document.body.style.backgroundColor = "white"; // Postavlja boju pozadine
+        }
+    </script>
+
 </body>
 </html>
-
-
