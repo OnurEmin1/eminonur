@@ -7,8 +7,8 @@
 /* Stil za telo */
 /* Postavlja tamno sivu pozadinsku boju za celu stranicu */
 body {
-    background-color: #333;  
-    color: #fff;             
+    background-color: #fff;  
+    color: #333;             
     margin: 0;
     font-family: Arial, sans-serif;
 }
