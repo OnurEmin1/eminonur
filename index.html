@@ -1,96 +1,36 @@
 <!DOCTYPE html>
-<html lang="bs">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AuShoot</title>
-    <style>
-        /* Generalni stilovi za cijeli dokument */
-        body {
-            background-color: #333;  /* Tamno siva pozadina */
-            color: #fff;             /* Bijeli tekst */
-            font-family: Arial, sans-serif;  /* Font za tekst */
-            margin: 0;
-            padding: 0;
-        }
-
-        h1, h2, p, a {
-            color: #fff;  /* Bijeli tekst za sve naslove i paragrafe */
-        }
-
-        /* Stiliziranje linkova */
-        a {
-            text-decoration: none;  /* Ukloni podcrtavanje linkova */
-            color: #fff;  /* Bijeli linkovi */
-        }
-
-        a:hover {
-            color: #ccc;  /* Svjetlija boja za hover efekt */
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-        }
-
-        /* Podesi razmake između linkova */
-        aside {
-            margin-top: 20px;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <header>
         <h1>Au<span>Shoot</span></h1>
-        <nav>
-            <!-- Ovdje možeš dodati linkove za navigaciju ako želiš -->
-        </nav>
     </header>
-
+    
     <main>
         <aside>
+            <a href="#">Version of game's</a>
             <br>
-            <a href="#">Verzije igre</a>
-            <br>
-            <a href="#" onclick="otvoriNoviProzor();">Verzija 1.1</a> <!-- Link za otvaranje igre verzije 1.1 -->
+            <a href="#" onclick="openNewWindow();">Version 1.1</a>
         </aside>
-
+        
         <section>
-            <h2>Ažuriranje</h2>
-            <p>Ažurirana verzija igre u kojoj si mali kvadrat koji se pomjera lijevo-desno i ubija druge kvadrate.</p>
-            <img src="sllika_version_1.1.png" alt="Ažuriranje slike" class="update-image">
+            <h2>UPDATE</h2>
+            <p>A new shooting game in which you are a small cube </p>
+            <p>that moves left and right and kills other cubes.</p>
+            <img src="sllika version 1.1.png" alt="Update Image" class="update-image">
         </section>
     </main>
 
-    <footer>
-        <p>&copy; 2024 Tvoje ime - Sva prava pridržana.</p>
-    </footer>
-
     <script>
-        // Funkcija koja otvara novi prozor sa igrom
-        function otvoriNoviProzor() {
-            const noviProzor = window.open("", "_blank", "width=800,height=600");
-            noviProzor.document.write(`
-                <!DOCTYPE html>
-                <html lang="bs">
-                <head>
-                    <meta charset="UTF-8">
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <title>AuShoot 1.1</title>
-                    <style>
-                        body { margin: 0; display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #333; color: #fff; }
-                        canvas { background-color: #333; }
-                    </style>
-                </head>
-                <body>
-                    <canvas id="gameCanvas" width="800" height="600"></canvas>
-                    <script src="game.js"></script>  <!-- Link za tvoj JavaScript -->
-                </body>
-                </html>
-            `);
+        function openNewWindow() {
+            // Otvorite `game.html` u novom prozoru
+            window.open('game.html', '_blank', 'width=800,height=600');
         }
     </script>
-
 </body>
 </html>
