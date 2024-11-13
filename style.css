@@ -6,9 +6,9 @@
 
 /* Stil za telo */
 body {
+    background-color: #f0f0f0; /* svetlo siva boja */
+    margin: 0;
     font-family: Arial, sans-serif;
-    algin-items: right;
-    padding: 20px 30px;
 }
 
 /* Stil za zaglavlje */
