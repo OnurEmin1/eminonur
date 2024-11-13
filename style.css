@@ -65,8 +65,8 @@ aside {
 
 aside a {
     display: block;
-    background-color: #ffffff; 
-    color: rgb(0, 0, 0);
+    background-color: #ffffff; /* bela boja */
+    color: #000000;
     text-decoration: none;
     margin-bottom: 5px;
     font-size: 40px; /* Povećana veličina fonta za linkove */
