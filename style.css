@@ -17,7 +17,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 30px 40px;
-    border-bottom: 2px solid rgb(0, 0, 0);
+    border-bottom: 3px solid rgb(0, 0, 0);
 }
 
 header h1 {
@@ -71,7 +71,7 @@ aside a {
 /* Stil za UPDATE sekciju */
 section {
     text-align: center;
-    font-size:36px;
+    font-size:40px;
 }
 
 section h2 {
