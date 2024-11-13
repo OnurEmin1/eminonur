@@ -6,12 +6,14 @@
 
 /* Stil za telo */
 /* Postavlja tamno sivu pozadinsku boju za celu stranicu */
+/* Postavlja tamno sivu pozadinsku boju za celu stranicu */
 body {
-    background-color: #333;  
-    color: #fff;             
+    background-color: #333333; /* tamno siva boja */
+    color: #ffffff; /* beli tekst radi bolje čitljivosti */
     margin: 0;
     font-family: Arial, sans-serif;
 }
+
 
 
 /* Stil za zaglavlje */
