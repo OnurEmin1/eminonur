@@ -30,23 +30,6 @@
             <a href="#" onclick="openNewWindow();">Version 1.1</a> <!-- Link za verziju 1.1 -->
         </aside>
         
-        <script>
-          function openNewWindow() {
-            // Otvaranje novog prozora sa praznim sadržajem
-            const newWindow = window.open('', '_blank', 'width=800,height=600');
-            
-            // Pozivanje funkcije koja može manipulisati novim prozorom
-            newWindow.document.write("<h1>The game will be here soon...</h1>");
-            
-            // Dodatna funkcionalnost
-            // Na primer, možete postaviti pozadinsku boju
-            newWindow.document.body.style.backgroundColor = "white";
-            
-            });
-          }
-        </script>
-        
-       
         
         <section>
             <h2>UPDATE</h2>
@@ -58,6 +41,11 @@
             <img src="sllika version   1.1.png" alt="Update Image" class="update-image">
         </section>
     </main>
-
+  <script>
+        function openNewWindow() {
+            // Otvorite `game.html` u novom prozoru
+            window.open('game.html', '_blank', 'width=800,height=600');
+        }
+    </script>
 </body>
 </html>
