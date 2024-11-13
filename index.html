@@ -32,31 +32,136 @@
         </section>
     </main>
 
-    <script>
-        function otvoriNoviProzor() {
-            // Otvori novi prozor sa igrom
-            const noviProzor = window.open("", "_blank", "width=800,height=600");
-            noviProzor.document.write(`
-                <!DOCTYPE html>
-                <html lang="bs">
-                <head>
-                    <meta charset="UTF-8">
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <title>AuShoot 1.1</title>
-                    <style>
-                        body { margin: 0; display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #007FFF; }
-                        canvas { background-color: #007FFF; }
-                    </style>
-                </head>
-                <body>
-                    <canvas id="gameCanvas" width="800" height="600"></canvas>
-                    <script src="game.js"></script>
-           `);
+   <script>
+    const canvas = document.getElementById("gameCanvas");
+    const ctx = canvas.getContext("2d");
+
+    // Postavke igre
+    const playerSize = 50;
+    let playerX = canvas.width / 2 - playerSize / 2;
+    const playerY = canvas.height - playerSize - 10;
+    const playerSpeed = 7;
+
+    const bulletSize = 5;
+    const bulletSpeed = -10;
+    let bullets = [];
+
+    const enemySize = 50;
+    let enemies = [];
+    const enemySpeed = 4;
+    const enemySpawnTime = 1000;  // 1 sekunda
+    let lastEnemySpawn = Date.now();
+
+    let score = 0;
+
+    // Funkcija za crtanje tekstova
+    function drawText(text, x, y, color = 'white') {
+        ctx.fillStyle = color;
+        ctx.font = "30px Arial";
+        ctx.fillText(text, x, y);
+    }
+
+    // Funkcija za generisanje neprijatelja
+    function spawnEnemy() {
+        const enemyX = Math.random() * (canvas.width - enemySize);
+        const enemyY = -enemySize;  // Na početku se pojavljuju iznad ekrana
+        enemies.push({ x: enemyX, y: enemyY });
+    }
+
+    // Funkcija za crtanje igrača
+    function drawPlayer() {
+        ctx.fillStyle = 'green';
+        ctx.fillRect(playerX, playerY, playerSize, playerSize);
+    }
+
+    // Funkcija za crtanje projektila
+    function drawBullets() {
+        ctx.fillStyle = 'white';
+        bullets.forEach(bullet => {
+            ctx.fillRect(bullet.x, bullet.y, bulletSize, bulletSize);
+        });
+    }
+
+    // Funkcija za crtanje neprijatelja
+    function drawEnemies() {
+        ctx.fillStyle = 'red';
+        enemies.forEach(enemy => {
+            ctx.fillRect(enemy.x, enemy.y, enemySize, enemySize);
+        });
+    }
+
+    // Funkcija za ažuriranje pozicije neprijatelja
+    function updateEnemies() {
+        enemies.forEach(enemy => {
+            enemy.y += enemySpeed;
+        });
+
+        // Uklanjanje neprijatelja koji su izašli iz ekrana
+        enemies = enemies.filter(enemy => enemy.y <= canvas.height);
+    }
+
+    // Funkcija za ažuriranje pozicije projektila
+    function updateBullets() {
+        bullets.forEach(bullet => {
+            bullet.y += bulletSpeed;
+        });
+
+        // Uklanjanje projektila koji su izašli iz ekrana
+        bullets = bullets.filter(bullet => bullet.y >= 0);
+    }
+
+    // Funkcija za detekciju sudara
+    function checkCollisions() {
+        bullets.forEach((bullet, index) => {
+            enemies.forEach((enemy, enemyIndex) => {
+                if (bullet.x < enemy.x + enemySize && bullet.x + bulletSize > enemy.x && bullet.y < enemy.y + enemySize && bullet.y + bulletSize > enemy.y) {
+                    // Sudar sa neprijateljem
+                    bullets.splice(index, 1);  // Ukloni projektil
+                    enemies.splice(enemyIndex, 1);  // Ukloni neprijatelja
+                    score += 1;  // Povećaj rezultat
+                }
+            });
+        });
+    }
+
+    // Funkcija za ažuriranje rezultata
+    function update() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        drawPlayer();
+        drawBullets();
+        drawEnemies();
+        drawText("Score: " + score, 10, 30);
+
+        updateEnemies();
+        updateBullets();
+        checkCollisions();
+
+        // Generišemo neprijatelje svakih 1 sekundu
+        if (Date.now() - lastEnemySpawn > enemySpawnTime) {
+            spawnEnemy();
+            lastEnemySpawn = Date.now();
         }
-                </body>
-                </html>
-       
-    </script>
+
+        requestAnimationFrame(update);  // Osvježava ekran
+    }
+
+    // Kontrole igrača
+    document.addEventListener("keydown", function(event) {
+        if (event.key === "ArrowLeft" && playerX > 0) {
+            playerX -= playerSpeed;
+        }
+        if (event.key === "ArrowRight" && playerX < canvas.width - playerSize) {
+            playerX += playerSpeed;
+        }
+        if (event.key === " " || event.key === "ArrowUp") {  // Space bar ili strelica gore za pucanje
+            bullets.push({ x: playerX + playerSize / 2 - bulletSize / 2, y: playerY });
+        }
+    });
+
+    update();  // Pokreće igru
+</script>
+
 
 </body>
 </html>
