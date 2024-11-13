@@ -58,7 +58,7 @@ main {
 /* Stil za aside sa linkovima */
 aside {
     position: absolute;
-    left: 10;
+    left: 0;
     padding-left: 20px;
     text-align: left;
 }
