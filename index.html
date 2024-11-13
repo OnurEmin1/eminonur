@@ -1,167 +1,96 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bs">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AuShoot</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Generalni stilovi za cijeli dokument */
+        body {
+            background-color: #333;  /* Tamno siva pozadina */
+            color: #fff;             /* Bijeli tekst */
+            font-family: Arial, sans-serif;  /* Font za tekst */
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, p, a {
+            color: #fff;  /* Bijeli tekst za sve naslove i paragrafe */
+        }
+
+        /* Stiliziranje linkova */
+        a {
+            text-decoration: none;  /* Ukloni podcrtavanje linkova */
+            color: #fff;  /* Bijeli linkovi */
+        }
+
+        a:hover {
+            color: #ccc;  /* Svjetlija boja za hover efekt */
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Podesi razmake između linkova */
+        aside {
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
 
     <header>
         <h1>Au<span>Shoot</span></h1>
         <nav>
+            <!-- Ovdje možeš dodati linkove za navigaciju ako želiš -->
         </nav>
     </header>
-    
+
     <main>
         <aside>
-            <a href="#">Version of game's</a>
             <br>
-            <a href="#" onclick="otvoriNoviProzor();">Version 1.1</a> <!-- Link za verziju 1.1 -->
+            <a href="#">Verzije igre</a>
+            <br>
+            <a href="#" onclick="otvoriNoviProzor();">Verzija 1.1</a> <!-- Link za otvaranje igre verzije 1.1 -->
         </aside>
-           <script>
-    const canvas = document.getElementById("gameCanvas");
-    const ctx = canvas.getContext("2d");
 
-    // Postavke igre
-    const playerSize = 50;
-    let playerX = canvas.width / 2 - playerSize / 2;
-    const playerY = canvas.height - playerSize - 10;
-    const playerSpeed = 7;
-
-    const bulletSize = 5;
-    const bulletSpeed = -10;
-    let bullets = [];
-
-    const enemySize = 50;
-    let enemies = [];
-    const enemySpeed = 4;
-    const enemySpawnTime = 1000;  // 1 sekunda
-    let lastEnemySpawn = Date.now();
-
-    let score = 0;
-
-    // Funkcija za crtanje tekstova
-    function drawText(text, x, y, color = 'white') {
-        ctx.fillStyle = color;
-        ctx.font = "30px Arial";
-        ctx.fillText(text, x, y);
-    }
-
-    // Funkcija za generisanje neprijatelja
-    function spawnEnemy() {
-        const enemyX = Math.random() * (canvas.width - enemySize);
-        const enemyY = -enemySize;  // Na početku se pojavljuju iznad ekrana
-        enemies.push({ x: enemyX, y: enemyY });
-    }
-
-    // Funkcija za crtanje igrača
-    function drawPlayer() {
-        ctx.fillStyle = 'green';
-        ctx.fillRect(playerX, playerY, playerSize, playerSize);
-    }
-
-    // Funkcija za crtanje projektila
-    function drawBullets() {
-        ctx.fillStyle = 'white';
-        bullets.forEach(bullet => {
-            ctx.fillRect(bullet.x, bullet.y, bulletSize, bulletSize);
-        });
-    }
-
-    // Funkcija za crtanje neprijatelja
-    function drawEnemies() {
-        ctx.fillStyle = 'red';
-        enemies.forEach(enemy => {
-            ctx.fillRect(enemy.x, enemy.y, enemySize, enemySize);
-        });
-    }
-
-    // Funkcija za ažuriranje pozicije neprijatelja
-    function updateEnemies() {
-        enemies.forEach(enemy => {
-            enemy.y += enemySpeed;
-        });
-
-        // Uklanjanje neprijatelja koji su izašli iz ekrana
-        enemies = enemies.filter(enemy => enemy.y <= canvas.height);
-    }
-
-    // Funkcija za ažuriranje pozicije projektila
-    function updateBullets() {
-        bullets.forEach(bullet => {
-            bullet.y += bulletSpeed;
-        });
-
-        // Uklanjanje projektila koji su izašli iz ekrana
-        bullets = bullets.filter(bullet => bullet.y >= 0);
-    }
-
-    // Funkcija za detekciju sudara
-    function checkCollisions() {
-        bullets.forEach((bullet, index) => {
-            enemies.forEach((enemy, enemyIndex) => {
-                if (bullet.x < enemy.x + enemySize && bullet.x + bulletSize > enemy.x && bullet.y < enemy.y + enemySize && bullet.y + bulletSize > enemy.y) {
-                    // Sudar sa neprijateljem
-                    bullets.splice(index, 1);  // Ukloni projektil
-                    enemies.splice(enemyIndex, 1);  // Ukloni neprijatelja
-                    score += 1;  // Povećaj rezultat
-                }
-            });
-        });
-    }
-
-    // Funkcija za ažuriranje rezultata
-    function update() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        drawPlayer();
-        drawBullets();
-        drawEnemies();
-        drawText("Score: " + score, 10, 30);
-
-        updateEnemies();
-        updateBullets();
-        checkCollisions();
-
-        // Generišemo neprijatelje svakih 1 sekundu
-        if (Date.now() - lastEnemySpawn > enemySpawnTime) {
-            spawnEnemy();
-            lastEnemySpawn = Date.now();
-        }
-
-        requestAnimationFrame(update);  // Osvježava ekran
-    }
-
-    // Kontrole igrača
-    document.addEventListener("keydown", function(event) {
-        if (event.key === "ArrowLeft" && playerX > 0) {
-            playerX -= playerSpeed;
-        }
-        if (event.key === "ArrowRight" && playerX < canvas.width - playerSize) {
-            playerX += playerSpeed;
-        }
-        if (event.key === " " || event.key === "ArrowUp") {  // Space bar ili strelica gore za pucanje
-            bullets.push({ x: playerX + playerSize / 2 - bulletSize / 2, y: playerY });
-        }
-    });
-
-    update();  // Pokreće igru
-</script>
         <section>
-            <h2>UPDATE</h2>
-            <p>A new shooting game in which you are a small <br>
-               cube that moves left and right and kills other cubes.<br>
-               <br>
-               <br>
-            </p>
-            <img src="sllika version 1.1.png" alt="Update Image" class="update-image">
+            <h2>Ažuriranje</h2>
+            <p>Ažurirana verzija igre u kojoj si mali kvadrat koji se pomjera lijevo-desno i ubija druge kvadrate.</p>
+            <img src="sllika_version_1.1.png" alt="Ažuriranje slike" class="update-image">
         </section>
     </main>
 
+    <footer>
+        <p>&copy; 2024 Tvoje ime - Sva prava pridržana.</p>
+    </footer>
 
-
+    <script>
+        // Funkcija koja otvara novi prozor sa igrom
+        function otvoriNoviProzor() {
+            const noviProzor = window.open("", "_blank", "width=800,height=600");
+            noviProzor.document.write(`
+                <!DOCTYPE html>
+                <html lang="bs">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>AuShoot 1.1</title>
+                    <style>
+                        body { margin: 0; display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #333; color: #fff; }
+                        canvas { background-color: #333; }
+                    </style>
+                </head>
+                <body>
+                    <canvas id="gameCanvas" width="800" height="600"></canvas>
+                    <script src="game.js"></script>  <!-- Link za tvoj JavaScript -->
+                </body>
+                </html>
+            `);
+        }
+    </script>
 
 </body>
 </html>
