@@ -65,6 +65,7 @@ aside {
 
 aside a {
     display: block;
+    background-color: #ffffff; 
     color: rgb(0, 0, 0);
     text-decoration: none;
     margin-bottom: 5px;
