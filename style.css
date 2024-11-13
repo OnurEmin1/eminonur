@@ -5,11 +5,14 @@
 }
 
 /* Stil za telo */
+/* Postavlja tamno sivu pozadinsku boju za celu stranicu */
 body {
-    background-color: #f0f0f0; /* svetlo siva boja */
+    background-color: #333333; /* tamno siva boja */
+    color: #ffffff; /* beli tekst radi bolje čitljivosti */
     margin: 0;
     font-family: Arial, sans-serif;
 }
+
 
 /* Stil za zaglavlje */
 header {
