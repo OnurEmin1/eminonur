@@ -7,12 +7,29 @@
 /* Stil za telo */
 /* Postavlja tamno sivu pozadinsku boju za celu stranicu */
 /* Postavlja tamno sivu pozadinsku boju za celu stranicu */
+/* Generalni stilovi za cijeli dokument */
 body {
-    background-color: #333333; /* tamno siva boja */
-    color: #ffffff; /* beli tekst radi bolje čitljivosti */
+    background-color: #333;  /* Tamno siva pozadina */
+    color: #fff;             /* Bijeli tekst */
+    font-family: Arial, sans-serif;  /* Opcionalno, odabrani font */
     margin: 0;
-    font-family: Arial, sans-serif;
+    padding: 0;
 }
+
+h1, h2, p, a {
+    color: #fff;  /* Bijeli tekst za sve naslove i paragrafe */
+}
+
+/* Stiliziranje linkova */
+a {
+    text-decoration: none;  /* Ukloni podcrtavanje linkova */
+    color: #fff;  /* Bijeli linkovi */
+}
+
+a:hover {
+    color: #ccc;  /* Svjetlija boja za hover efekt */
+}
+
 
 
 
