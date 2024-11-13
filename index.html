@@ -41,11 +41,30 @@
             <img src="sllika version   1.1.png" alt="Update Image" class="update-image">
         </section>
     </main>
-  <script>
-        function openNewWindow() {
-            // Otvorite `game.html` u novom prozoru
-            window.open('game.html', '_blank', 'width=800,height=600');
+ <script>
+        function otvoriNoviProzor() {
+            // Otvoriti novi prozor sa igrom
+            const noviProzor = window.open("", "_blank", "width=800,height=600");
+            noviProzor.document.write(`
+                <!DOCTYPE html>
+                <html lang="bs">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>AuShoot 1.1</title>
+                    <style>
+                        body { margin: 0; display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #007FFF; }
+                        canvas { background-color: #007FFF; }
+                    </style>
+                </head>
+                <body>
+                    <canvas id="gameCanvas" width="800" height="600"></canvas>
+                    <script src="version_game_1.1.js"></script>
+                </body>
+                </html>
+            `);
         }
     </script>
+
 </body>
 </html>
