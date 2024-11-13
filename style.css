@@ -46,7 +46,7 @@ header h1 span {
 /* Glavni stil za sekcije */
 main {
     display: flex;
-    padding: 40px;
+    padding: 60px;
     justify-content: center;
     align-items: flex-start;
     position: relative;
