@@ -65,11 +65,11 @@ aside {
 
 aside a {
     display: block;
-    background-color: #ffffff; /* bela boja */
-    color: #000000;
+    background-color: #333333; /* bela boja */
+    color: #ffffff;
     text-decoration: none;
     margin-bottom: 5px;
-    font-size: 40px; /* Povećana veličina fonta za linkove */
+    font-size: 40px; /* Povećana veličina fonta za linkofve */
 }
 
 /* Stil za UPDATE sekciju */
