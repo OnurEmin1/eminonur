@@ -118,7 +118,7 @@ aside a:hover {
 .update-image {
     display: block;
     margin: 10px auto; /* Centriranje slike */
-    max-width: 60%; /* Ograničava širinu slike na 80% širine sekcije */
+    max-width: 50%; /* Ograničava širinu slike na 80% širine sekcije */
     height: auto; /* Održava proporcije slike */
 }
 
