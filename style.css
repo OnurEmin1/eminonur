@@ -90,6 +90,10 @@ aside a {
     font-size: 40px; /* Povećana veličina fonta za linkofve */
 }
 
+aside a {
+    color: white;
+}
+
 /* Stil za UPDATE sekciju */
 section {
     text-align: center;
