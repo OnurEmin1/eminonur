@@ -102,8 +102,7 @@ function update() {
             }
         }
     }
-function update() {
-    ctx.clearRect(0, 0, WIDTH, HEIGHT);  // Očisti platno
+  // Očisti platno
 
     // Testiraj crtanje jednostavnog oblika
     ctx.fillStyle = "red";
