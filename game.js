@@ -102,6 +102,15 @@ function update() {
             }
         }
     }
+function update() {
+    ctx.clearRect(0, 0, WIDTH, HEIGHT);  // Očisti platno
+
+    // Testiraj crtanje jednostavnog oblika
+    ctx.fillStyle = "red";
+    ctx.fillRect(50, 50, 100, 100);  // Crtanje crvenog kvadrata
+
+    // Ostatak vašeg koda...
+}
 
     // Sudar metaka i neprijatelja
     for (let i = bullets.length - 1; i >= 0; i--) {
