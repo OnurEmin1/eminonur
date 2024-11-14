@@ -33,6 +33,7 @@ const enemySpawnTime = 1000;
 // Rezultat
 let score = 0;
 let lives = 5;  // Početni broj života
+let isGameOver = false;  // Prati da li je igra gotova
 
 // Funkcija za stvaranje neprijatelja
 function spawnEnemy() {
@@ -61,6 +62,15 @@ function drawHeart(x, y, size) {
 // Glavna funkcija za ažuriranje stanja igre
 function update() {
     ctx.clearRect(0, 0, WIDTH, HEIGHT);
+
+    // Prikaz "GAME OVER" ako su životi 0
+    if (isGameOver) {
+        ctx.fillStyle = COLORS.RED;
+        ctx.font = "48px Arial";
+        ctx.textAlign = "center";
+        ctx.fillText("GAME OVER", WIDTH / 2, HEIGHT / 2);
+        return; // Zaustavi dalju logiku ažuriranja igre
+    }
 
     // Kretanje igrača
     if (keys["ArrowLeft"] && playerX > 0) playerX -= playerSpeed;
@@ -141,17 +151,16 @@ window.addEventListener("keyup", e => keys[e.key] = false);
 
 // Funkcija za resetovanje igre
 function resetGame() {
-    playerX = WIDTH / 2;
-    score = 0;
-    lives = 5;
-    enemies.length = 0;  // Očisti neprijatelje
-    bullets.length = 0;  // Očisti metke
+    isGameOver = true;  // Postavlja igru kao završenu
 }
 
 // Glavna petlja igre
 function gameLoop() {
-    update();
-    requestAnimationFrame(gameLoop);
+    if (!isGameOver) {
+        update();
+        requestAnimationFrame(gameLoop);
+    }
 }
 
+// Pokretanje igre
 gameLoop();
