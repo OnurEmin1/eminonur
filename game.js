@@ -32,7 +32,7 @@ const enemySpawnTime = 1000;
 
 // Rezultat
 let score = 0;
-let lives = 3;  // Početni broj života
+let lives = 5;  // Početni broj života
 
 // Funkcija za stvaranje neprijatelja
 function spawnEnemy() {
