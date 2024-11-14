@@ -83,9 +83,7 @@ aside {
 }
 
 aside a {
-    display: block;
-    background-color: white; /* Tamno siva pozadina */
-    color: white; 
+    display: block; 
     text-decoration: none;
     margin-bottom: 5px;
     font-size: 40px; /* Povećana veličina fonta za linkofve */
