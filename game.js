@@ -1,5 +1,9 @@
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
+const canvas = document.getElementById("gameCanvas");
+if (!canvas) {
+    console.error("Canvas element nije pronađen!");
+}
 
 const WIDTH = canvas.width;
 const HEIGHT = canvas.height;
