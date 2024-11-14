@@ -16,7 +16,7 @@ body {
     padding: 0;
 }
 
-h1, h2, p, a {
+h1, h2, p {
     color: #fff;  /* Bijeli tekst za sve naslove i paragrafe */
 }
 
@@ -84,6 +84,7 @@ aside {
 
 aside a {
     display: block; 
+    color:  #fff;
     text-decoration: none;
     margin-bottom: 5px;
     font-size: 40px; /* Povećana veličina fonta za linkofve */
