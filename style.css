@@ -84,7 +84,7 @@ aside {
 
 aside a {
     display: block;
-    background-color: #333; /* Tamno siva pozadina */
+    background-color: white; /* Tamno siva pozadina */
     color: white; 
     text-decoration: none;
     margin-bottom: 5px;
