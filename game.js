@@ -9,7 +9,8 @@ const COLORS = {
     WHITE: "#FFFFFF",
     BLACK: "#000000",
     RED: "#FF0000",
-    GREEN: "#00FF00"
+    GREEN: "#00FF00",
+    HEART: "#FF69B4"  // Boja srca
 };
 
 // Igrač
@@ -30,20 +31,38 @@ const enemySpeed = { normal: 4 };
 let lastEnemySpawn = Date.now();
 const enemySpawnTime = 1000;
 
-// Rezultat
+// Rezultat i životi
 let score = 0;
+let lives = 3;
 
+// Funkcija za generisanje neprijatelja
 function spawnEnemy() {
     const enemyX = Math.random() * (WIDTH - enemySize);
     enemies.push({ x: enemyX, y: -enemySize, type: "normal", direction: Math.random() > 0.5 ? 1 : -1 });
 }
 
+// Funkcija za crtanje teksta (rezultat)
 function drawText(text, x, y, color = COLORS.WHITE) {
     ctx.fillStyle = color;
     ctx.font = "36px Arial";
     ctx.fillText(text, x, y);
 }
 
+// Funkcija za crtanje srca (život)
+function drawHearts() {
+    const heartSize = 30;
+    for (let i = 0; i < lives; i++) {
+        ctx.fillStyle = COLORS.HEART;
+        ctx.beginPath();
+        ctx.moveTo(heartSize * 1.5 * i + 10, 40);
+        ctx.arc(heartSize * 1.5 * i + 20, 40, heartSize / 2, Math.PI, 0, false);
+        ctx.arc(heartSize * 1.5 * i + 30, 40, heartSize / 2, Math.PI, 0, false);
+        ctx.closePath();
+        ctx.fill();
+    }
+}
+
+// Funkcija za ažuriranje igre
 function update() {
     ctx.clearRect(0, 0, WIDTH, HEIGHT);
 
@@ -74,7 +93,15 @@ function update() {
             enemy.x += enemy.direction * 3;
             if (enemy.x <= 0 || enemy.x >= WIDTH - enemySize) enemy.direction *= -1;
         }
-        if (enemy.y > HEIGHT) enemies.splice(i, 1);
+        if (enemy.y > HEIGHT) {
+            // Ako neprijatelj pređe dno ekrana, igrač gubi život
+            lives--;
+            enemies.splice(i, 1);
+            if (lives <= 0) {
+                // Kada igrač izgubi sve živote, resetujemo igru
+                resetGame();
+            }
+        }
     }
 
     // Sudar metaka i neprijatelja
@@ -110,14 +137,22 @@ function update() {
         ctx.fillRect(enemy.x, enemy.y, enemySize, enemySize);
     });
 
-    // Prikaz rezultata
+    // Prikaz rezultata i života
     drawText(`Score: ${score}`, 10, 40);
+    drawHearts();
 }
 
 // Postavljanje tipki
 const keys = {};
 window.addEventListener("keydown", e => keys[e.key] = true);
 window.addEventListener("keyup", e => keys[e.key] = false);
+
+// Funkcija za resetovanje igre
+function resetGame() {
+    score = 0;
+    lives = 3;
+    enemies.length = 0;  // Čisti sve neprijatelje
+}
 
 // Glavna petlja igre
 function gameLoop() {
