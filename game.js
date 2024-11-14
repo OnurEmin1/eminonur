@@ -143,7 +143,7 @@ window.addEventListener("keyup", e => keys[e.key] = false);
 function resetGame() {
     playerX = WIDTH / 2;
     score = 0;
-    lives = 3;
+    lives = 5;
     enemies.length = 0;  // Očisti neprijatelje
     bullets.length = 0;  // Očisti metke
 }
