@@ -1,9 +1,5 @@
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
-const canvas = document.getElementById("gameCanvas");
-if (!canvas) {
-    console.error("Canvas element nije pronađen!");
-}
 
 const WIDTH = canvas.width;
 const HEIGHT = canvas.height;
@@ -89,27 +85,12 @@ function update() {
     for (let i = enemies.length - 1; i >= 0; i--) {
         const enemy = enemies[i];
         enemy.y += enemySpeed[enemy.type];
-        if (enemy.type === "zigzag") {
-            enemy.x += enemy.direction * 3;
-            if (enemy.x <= 0 || enemy.x >= WIDTH - enemySize) enemy.direction *= -1;
-        }
         if (enemy.y > HEIGHT) {
-            // Ako neprijatelj pređe dno ekrana, gubiš jedan život
             enemies.splice(i, 1);
             lives--;  // Oduzimanje života
-            if (lives <= 0) {
-                resetGame();  // Ako nemaš više života, resetuj igru
-            }
+            if (lives <= 0) resetGame();  // Ako nemaš više života, resetuj igru
         }
     }
-  // Očisti platno
-
-    // Testiraj crtanje jednostavnog oblika
-    ctx.fillStyle = "red";
-    ctx.fillRect(50, 50, 100, 100);  // Crtanje crvenog kvadrata
-
-    // Ostatak vašeg koda...
-}
 
     // Sudar metaka i neprijatelja
     for (let i = bullets.length - 1; i >= 0; i--) {
