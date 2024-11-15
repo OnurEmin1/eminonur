@@ -24,6 +24,11 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
 
+        .shop-item h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
         .shop-item button {
             background-color: #4CAF50;
             color: white;
@@ -48,39 +53,35 @@
 </head>
 <body>
     <h1>Shop</h1>
-    <div class="coins-display">Coins: <span id="coins">0</span></div>
+    <div class="coins-display">Coins: <span id="coins">100</span></div>
 
     <!-- Item 1 -->
     <div class="shop-item">
         <h3>AddHeart</h3>
-        <p>Cost: 30 coins</p>
+        <p>Item 30 coins</p>
         <button onclick="buyItem(30, 'AddHeart')">Buy</button>
     </div>
 
     <!-- Item 2 -->
     <div class="shop-item">
         <h3>20xSpeed</h3>
-        <p>Cost: 50 coins</p>
+        <p>Item 50 coins</p>
         <button onclick="buyItem(50, '20xSpeed')">Buy</button>
     </div>
 
     <!-- Item 3 -->
     <div class="shop-item">
         <h3>Sheld_10</h3>
-        <p>Cost: 70 coins</p>
+        <p>Item 70 coins</p>
         <button onclick="buyItem(70, 'Sheld_10')">Buy</button>
     </div>
 
     <script>
-        // Učitavanje trenutnog broja novčića iz localStorage
-        let coins = parseInt(localStorage.getItem('coins')) || 0;
-        document.getElementById('coins').textContent = coins;
+        let coins = 100;
 
-        // Funkcija za kupovinu predmeta
         function buyItem(cost, itemName) {
             if (coins >= cost) {
                 coins -= cost;
-                localStorage.setItem('coins', coins);
                 document.getElementById('coins').textContent = coins;
                 alert(`You bought ${itemName}!`);
             } else {
