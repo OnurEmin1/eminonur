@@ -8,17 +8,11 @@ function updateCoinsDisplay() {
     localStorage.setItem('coins', coins); // Čuvanje novčića u localStorage
 }
 
-// Funkcija za kupovinu života (besplatno)
-document.getElementById('DARK-BLUE cube').addEventListener('click', function() {
-    // Ovdje nema smanjenja novčića, jer je besplatno
-    alert('You bought for free!');
-    updateCoinsDisplay(); // Ažuriraj prikaz novčića (ako želiš da prikazuješ broj)
-});
-
-// Funkcija za kupovinu brzine (besplatno)
-document.getElementById('ORANGE cube').addEventListener('click', function() {
-    // Ovdje nema smanjenja novčića, jer je besplatno
-    alert('You bought for free!');
+// Funkcija za kupovinu tamno plave kocke (besplatno)
+document.getElementById('buyDarkBlueCube').addEventListener('click', function() {
+    // Postavljamo boju kocke u localStorage
+    localStorage.setItem('cubeColor', 'darkblue');
+    alert('You bought a DARK-BLUE Cube!');
     updateCoinsDisplay(); // Ažuriraj prikaz novčića (ako želiš da prikazuješ broj)
 });
 
