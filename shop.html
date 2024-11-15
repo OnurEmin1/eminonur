@@ -24,9 +24,9 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
 
-        .shop-item img {
-            max-width: 100%;
-            border-radius: 8px;
+        .shop-item h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
         }
 
         .shop-item button {
@@ -55,29 +55,30 @@
     <h1>Shop</h1>
     <div class="coins-display">Coins: <span id="coins">100</span></div>
 
+    <!-- Item 1 -->
     <div class="shop-item">
-        <alt:AddHeart>
+        <h3>AddHeart</h3>
         <p>Item 30 coins</p>
         <button onclick="buyItem(30, 'AddHeart')">Buy</button>
     </div>
 
+    <!-- Item 2 -->
     <div class="shop-item">
-        <img src="slika.2.jpg" alt="20xSpeed">
+        <h3>20xSpeed</h3>
         <p>Item 50 coins</p>
         <button onclick="buyItem(50, '20xSpeed')">Buy</button>
     </div>
 
+    <!-- Item 3 -->
     <div class="shop-item">
-        <img src="slika.3.jpg" alt="Sheld_10">
+        <h3>Sheld_10</h3>
         <p>Item 70 coins</p>
         <button onclick="buyItem(70, 'Sheld_10')">Buy</button>
     </div>
 
     <script>
-        // Početni broj novčića
         let coins = 100;
 
-        // Funkcija za kupovinu predmeta
         function buyItem(cost, itemName) {
             if (coins >= cost) {
                 coins -= cost;
