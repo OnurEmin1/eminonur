@@ -1,4 +1,4 @@
-// Učitavanje broja novčića iz localStorage
+// Učitavanje broja novčića iz localStorage (ako želiš da prikažeš broj novčića, ali se neće trošiti)
 let coins = parseInt(localStorage.getItem('coins')) || 0;
 const coinsDisplay = document.getElementById('coinsDisplay');
 
@@ -8,26 +8,18 @@ function updateCoinsDisplay() {
     localStorage.setItem('coins', coins); // Čuvanje novčića u localStorage
 }
 
-// Funkcija za kupovinu života
-document.getElementById('DARK-BLUE cube').addEventListener('click', function() {
-    if (coins >= 0) {
-        coins -= 0; // Smanji broj novčića za 50
-        alert('You bought a life!');
-        updateCoinsDisplay(); // Ažuriraj prikaz novčića
-    } else {
-        alert('Not enough coins!');
-    }
+// Funkcija za kupovinu života (besplatno)
+document.getElementById('buyLife').addEventListener('click', function() {
+    // Ovdje nema smanjenja novčića, jer je besplatno
+    alert('You bought a life for free!');
+    updateCoinsDisplay(); // Ažuriraj prikaz novčića (ako želiš da prikazuješ broj)
 });
 
-// Funkcija za kupovinu brzine
-document.getElementById('ORANGE cube').addEventListener('click', function() {
-    if (coins >= 0) {
-        coins -= 0; // Smanji broj novčića za 30
-        alert('You bought speed!');
-        updateCoinsDisplay(); // Ažuriraj prikaz novčića
-    } else {
-        alert('Not enough coins!');
-    }
+// Funkcija za kupovinu brzine (besplatno)
+document.getElementById('buySpeed').addEventListener('click', function() {
+    // Ovdje nema smanjenja novčića, jer je besplatno
+    alert('You bought speed for free!');
+    updateCoinsDisplay(); // Ažuriraj prikaz novčića (ako želiš da prikazuješ broj)
 });
 
 // Inicijalno ažuriraj prikaz novčića
