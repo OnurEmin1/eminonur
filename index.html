@@ -17,8 +17,8 @@
             <br>
             <div class="inline-container">
                 <a href="#" style="color: white;" onclick="openNewWindow();">Version 1.1</a>
-                <!-- Dugme za Shop pored linka -->
-                <button onclick="openShop();" style="padding: 10px 20px; font-size: 20px; cursor: pointer;">Shop</button>
+                <!-- Povećano dugme za Shop -->
+                <button onclick="openShop();" class="big-button">Shop</button>
             </div>
         </aside>
 
@@ -44,20 +44,27 @@
                 background-color: #4CAF50; /* Zelena boja */
                 color: white;
                 border: none;
-                border-radius: 10px;
-                margin-left: 400px; /* Razmak između linka i dugmeta */
-                transition: background-color 0.3s;
+                border-radius: 10px; /* Zaobljeni uglovi */
+                transition: background-color 0.3s, transform 0.2s;
             }
 
-            button:hover {
+            .big-button {
+                padding: 15px 30px; /* Povećano unutar dugmeta */
+                font-size: 18px; /* Povećan font */
+                font-weight: bold; /* Podebljan tekst */
+                cursor: pointer;
+            }
+
+            .big-button:hover {
                 background-color: #45a049; /* Tamnija zelena na hover */
+                transform: scale(1.1); /* Efekat povećanja na hover */
             }
 
             /* Stil za konteiner */
             .inline-container {
                 display: flex;
                 align-items: center;
-                gap: 10px; /* Razmak između elemenata */
+                gap: 20px; /* Razmak između elemenata */
             }
         </style>
 
