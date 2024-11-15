@@ -1,27 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game</title>
+    <title>AuShoot 1.1</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-        }
+        body { margin: 0; display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #007FFF; }
+        canvas { background-color: #007FFF; }
     </style>
 </head>
 <body>
-    <h1>Game</h1>
-    <canvas id="game.js" width="800" height="600"></canvas>
-
+    <canvas id="gameCanvas" width="800" height="600"></canvas>
     <script>
-        // Simulacija ubijanja neprijatelja
-        document.addEventListener('keydown', (event) => {
-            if (event.key === 'k') { // Pritisak na 'k' simbolizira ubijanje neprijatelja
-                alert('You killed an enemy!');
-            }
-        });
+        // Game JavaScript code here
     </script>
 </body>
 </html>
