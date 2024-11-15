@@ -9,16 +9,16 @@ function updateCoinsDisplay() {
 }
 
 // Funkcija za kupovinu života (besplatno)
-document.getElementById('buyLife').addEventListener('click', function() {
+document.getElementById('DARK-BLUE cube').addEventListener('click', function() {
     // Ovdje nema smanjenja novčića, jer je besplatno
-    alert('You bought a life for free!');
+    alert('You bought for free!');
     updateCoinsDisplay(); // Ažuriraj prikaz novčića (ako želiš da prikazuješ broj)
 });
 
 // Funkcija za kupovinu brzine (besplatno)
-document.getElementById('buySpeed').addEventListener('click', function() {
+document.getElementById('ORANGE cube').addEventListener('click', function() {
     // Ovdje nema smanjenja novčića, jer je besplatno
-    alert('You bought speed for free!');
+    alert('You bought for free!');
     updateCoinsDisplay(); // Ažuriraj prikaz novčića (ako želiš da prikazuješ broj)
 });
 
