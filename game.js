@@ -61,15 +61,21 @@ function drawHeart(x, y, size) {
 
 // Funkcija za učitavanje najvišeg rezultata
 function loadHighestScore() {
-    return parseInt(localStorage.getItem('highestScore')) || 0;
+    return parseInt(localStorage.getItem('highestScore')) || 0; // Ako nije sačuvan, vraća 0
 }
 
 // Funkcija za čuvanje najvišeg rezultata
 function saveHighestScore() {
     const highestScore = loadHighestScore();
     if (score > highestScore) {
-        localStorage.setItem('highestScore', score);
+        localStorage.setItem('highestScore', score); // Ako je trenutni score veći, sačuvaj ga
     }
+}
+
+// Funkcija za prikazivanje najvišeg rezultata u toku igre
+function drawHighestScore() {
+    const highestScore = loadHighestScore();
+    drawText(`Highest Score: ${highestScore}`, WIDTH / 2, HEIGHT / 2 + 50);
 }
 
 // Glavna funkcija za ažuriranje stanja igre
@@ -82,7 +88,7 @@ function update() {
         ctx.font = "48px Arial";
         ctx.textAlign = "center";
         ctx.fillText("GAME OVER", WIDTH / 2, HEIGHT / 2);
-        ctx.fillText(`Highest Score: ${loadHighestScore()}`, WIDTH / 2, HEIGHT / 2 + 50);
+        drawHighestScore();  // Prikazivanje najvišeg rezultata
         return; // Zaustavi dalju logiku ažuriranja igre
     }
 
@@ -165,7 +171,7 @@ window.addEventListener("keyup", e => keys[e.key] = false);
 
 // Funkcija za resetovanje igre
 function resetGame() {
-    saveHighestScore();  // Čuvanje najvišeg rezultata
+    saveHighestScore();  // Spremi najviši rezultat kada igra završi
     isGameOver = true;  // Postavlja igru kao završenu
 }
 
@@ -179,3 +185,4 @@ function gameLoop() {
 
 // Pokretanje igre
 gameLoop();
+
