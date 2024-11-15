@@ -10,8 +10,8 @@ function updateCoinsDisplay() {
 
 // Funkcija za kupovinu života
 document.getElementById('DARK-BLUE cube').addEventListener('click', function() {
-    if (coins >= 50) {
-        coins -= 50; // Smanji broj novčića za 50
+    if (coins >= 0) {
+        coins -= 0; // Smanji broj novčića za 50
         alert('You bought a life!');
         updateCoinsDisplay(); // Ažuriraj prikaz novčića
     } else {
@@ -21,8 +21,8 @@ document.getElementById('DARK-BLUE cube').addEventListener('click', function() {
 
 // Funkcija za kupovinu brzine
 document.getElementById('ORANGE cube').addEventListener('click', function() {
-    if (coins >= 30) {
-        coins -= 30; // Smanji broj novčića za 30
+    if (coins >= 0) {
+        coins -= 0; // Smanji broj novčića za 30
         alert('You bought speed!');
         updateCoinsDisplay(); // Ažuriraj prikaz novčića
     } else {
