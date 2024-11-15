@@ -12,29 +12,56 @@
     </header>
     
     <main>
-     <aside>
-    <a href="#" style="color: white;">Version of game's</a>
-    <br>
-    <a href="#" style="color: white;" onclick="openNewWindow();">Version 1.1</a>
-</aside>
+        <aside>
+            <a href="#" style="color: white;">Version of game's</a>
+            <br>
+            <div class="inline-container">
+                <a href="#" style="color: white;" onclick="openNewWindow();">Version 1.1</a>
+                <!-- Dugme za Shop pored linka -->
+                <button onclick="openShop();" style="padding: 5px 10px; font-size: 14px; cursor: pointer;">Shop</button>
+            </div>
+        </aside>
 
+        <script>
+            function openNewWindow() {
+                // Otvorite `game.html` u novom prozoru
+                window.open('game.html', '_blank', 'width=800,height=600');
+            }
 
-            <script>
-        function openNewWindow() {
-            // Otvorite `game.html` u novom prozoru
-            window.open('game.html', '_blank', 'width=800,height=600');
-        }
-    </script>
+            function openShop() {
+                // Otvara sliku u novom prozoru
+                window.open('shop.jpg', '_blank', 'width=600,height=400');
+            }
+        </script>
 
-    <style>
-    aside a {
-        color: white;
-    }
-</style>
+        <style>
+            aside a {
+                color: white;
+            }
 
-    <canvas id="gameCanvas" width="800" height="600"></canvas>
+            /* Stil za dugme */
+            button {
+                background-color: #4CAF50; /* Zelena boja */
+                color: white;
+                border: none;
+                border-radius: 5px;
+                margin-left: 10px; /* Razmak između linka i dugmeta */
+                transition: background-color 0.3s;
+            }
 
+            button:hover {
+                background-color: #45a049; /* Tamnija zelena na hover */
+            }
 
+            /* Stil za konteiner */
+            .inline-container {
+                display: flex;
+                align-items: center;
+                gap: 10px; /* Razmak između elemenata */
+            }
+        </style>
+
+        <canvas id="gameCanvas" width="800" height="600"></canvas>
         
         <section>
             <h2>UPDATE</h2>
@@ -43,7 +70,5 @@
             <img src="slika version 1.1" alt="Update Image" class="update-image">
         </section>
     </main>
-
-
 </body>
 </html>
