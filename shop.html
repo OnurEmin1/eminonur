@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .shop-item {
+            display: inline-block;
+            margin: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            width: 200px;
+            background-color: #fff;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .shop-item img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+
+        .shop-item button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .shop-item button:hover {
+            background-color: #45a049;
+        }
+
+        .coins-display {
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Shop</h1>
+    <div class="coins-display">Coins: <span id="coins">100</span></div>
+
+    <div class="shop-item">
+        <img src="item1.jpg" alt="Item 1">
+        <p>Item 1 - 30 coins</p>
+        <button onclick="buyItem(30, 'Item 1')">Buy</button>
+    </div>
+
+    <div class="shop-item">
+        <img src="item2.jpg" alt="Item 2">
+        <p>Item 2 - 50 coins</p>
+        <button onclick="buyItem(50, 'Item 2')">Buy</button>
+    </div>
+
+    <div class="shop-item">
+        <img src="item3.jpg" alt="Item 3">
+        <p>Item 3 - 70 coins</p>
+        <button onclick="buyItem(70, 'Item 3')">Buy</button>
+    </div>
+
+    <script>
+        // Početni broj novčića
+        let coins = 100;
+
+        // Funkcija za kupovinu predmeta
+        function buyItem(cost, itemName) {
+            if (coins >= cost) {
+                coins -= cost;
+                document.getElementById('coins').textContent = coins;
+                alert(`You bought ${itemName}!`);
+            } else {
+                alert('Not enough coins!');
+            }
+        }
+    </script>
+</body>
+</html>
