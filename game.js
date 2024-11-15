@@ -9,7 +9,8 @@ const COLORS = {
     WHITE: "#FFFFFF",
     BLACK: "#000000",
     RED: "#FF0000",
-    GREEN: "#00FF00"
+    GREEN: "#00FF00",
+    DARKBLUE: "#00008B"  // Tamno plava boja
 };
 
 // Igrač
@@ -59,25 +60,6 @@ function drawHeart(x, y, size) {
     ctx.fill();
 }
 
-// Funkcija za učitavanje najvišeg rezultata
-function loadHighestScore() {
-    return parseInt(localStorage.getItem('highestScore')) || 0; // Ako nije sačuvan, vraća 0
-}
-
-// Funkcija za čuvanje najvišeg rezultata
-function saveHighestScore() {
-    const highestScore = loadHighestScore();
-    if (score > highestScore) {
-        localStorage.setItem('highestScore', score); // Ako je trenutni score veći, sačuvaj ga
-    }
-}
-
-// Funkcija za prikazivanje najvišeg rezultata u toku igre
-function drawHighestScore() {
-    const highestScore = loadHighestScore();
-    drawText(`Highest Score: ${highestScore}`, WIDTH / 2, HEIGHT / 2 + 50);
-}
-
 // Glavna funkcija za ažuriranje stanja igre
 function update() {
     ctx.clearRect(0, 0, WIDTH, HEIGHT);
@@ -88,7 +70,6 @@ function update() {
         ctx.font = "48px Arial";
         ctx.textAlign = "center";
         ctx.fillText("GAME OVER", WIDTH / 2, HEIGHT / 2);
-        drawHighestScore();  // Prikazivanje najvišeg rezultata
         return; // Zaustavi dalju logiku ažuriranja igre
     }
 
@@ -141,8 +122,11 @@ function update() {
         }
     }
 
-    // Crtanje igrača
-    ctx.fillStyle = COLORS.GREEN;
+    // Boja kocke koja se kontroliše
+    const cubeColor = localStorage.getItem('cubeColor') || 'green';  // Koristi tamno plavu ako je kupljena
+
+    // Crtanje igrača (kocka)
+    ctx.fillStyle = cubeColor;
     ctx.fillRect(playerX, playerY, playerSize, playerSize);
 
     // Crtanje metaka
@@ -171,7 +155,6 @@ window.addEventListener("keyup", e => keys[e.key] = false);
 
 // Funkcija za resetovanje igre
 function resetGame() {
-    saveHighestScore();  // Spremi najviši rezultat kada igra završi
     isGameOver = true;  // Postavlja igru kao završenu
 }
 
@@ -185,4 +168,3 @@ function gameLoop() {
 
 // Pokretanje igre
 gameLoop();
-
