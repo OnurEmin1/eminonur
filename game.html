@@ -1,18 +1,42 @@
 <!DOCTYPE html>
-<html lang="hr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AuShoot 1.1</title>
+    <title>Game</title>
     <style>
-        body { margin: 0; display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #007FFF; }
-        canvas { background-color: #007FFF; }
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
+    <h1>Game</h1>
+    <div id="coins-display">Coins: <span id="coins">0</span></div>
     <canvas id="gameCanvas" width="800" height="600"></canvas>
-    <script src="game.js"></script>
+
+    <script>
+        let coins = parseInt(localStorage.getItem('coins')) || 0;
+        const coinsDisplay = document.getElementById('coins');
+
+        // Funkcija za dodavanje novčića
+        function addCoin() {
+            coins++;
+            localStorage.setItem('coins', coins);
+            coinsDisplay.textContent = coins;
+        }
+
+        // Inicijalno prikazivanje broja novčića
+        coinsDisplay.textContent = coins;
+
+        // Simulacija ubijanja neprijatelja
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'k') { // Pritisak na 'k' simbolizira ubijanje neprijatelja
+                addCoin();
+                alert('You killed an enemy and earned a coin!');
+            }
+        });
+    </script>
 </body>
 </html>
-
-
