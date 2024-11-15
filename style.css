@@ -30,7 +30,10 @@ a:hover {
     color: #ccc;  /* Svjetlija boja za hover efekt */
 }
 
-
+.inline-container {
+    display: flex;
+    align-items: center;
+}
 
 
 /* Stil za zaglavlje */
