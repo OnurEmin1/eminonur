@@ -1,3 +1,4 @@
+// Game JavaScript code
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 
@@ -52,11 +53,24 @@ function drawText(text, x, y, color = COLORS.WHITE) {
 function drawHeart(x, y, size) {
     ctx.beginPath();
     ctx.moveTo(x, y);
-    ctx.bezierCurveTo(x - size / 2, y - size / 2, x - size, y + size / 2, x, y + size);
+    ctx.bezierCurveTo(x - size / 2, y - size / size, x - size, y + size / 2, x, y + size);
     ctx.bezierCurveTo(x + size, y + size / 2, x + size / 2, y - size / 2, x, y);
     ctx.closePath();
     ctx.fillStyle = COLORS.RED;
     ctx.fill();
+}
+
+// Funkcija za čuvanje rezultata u localStorage
+function saveScore() {
+    const highestScore = localStorage.getItem('highestScore') || 0;
+    if (score > highestScore) {
+        localStorage.setItem('highestScore', score);  // Čuva novi najviši rezultat
+    }
+}
+
+// Funkcija za učitavanje najvišeg rezultata iz localStorage
+function loadHighestScore() {
+    return parseInt(localStorage.getItem('highestScore')) || 0;
 }
 
 // Glavna funkcija za ažuriranje stanja igre
@@ -65,10 +79,12 @@ function update() {
 
     // Prikaz "GAME OVER" ako su životi 0
     if (isGameOver) {
+        saveScore();  // Spremi rezultat kada igra završi
         ctx.fillStyle = COLORS.RED;
         ctx.font = "48px Arial";
         ctx.textAlign = "center";
         ctx.fillText("GAME OVER", WIDTH / 2, HEIGHT / 2);
+        ctx.fillText(`Highest Score: ${loadHighestScore()}`, WIDTH / 2, HEIGHT / 2 + 50);
         return; // Zaustavi dalju logiku ažuriranja igre
     }
 
