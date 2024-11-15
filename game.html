@@ -13,28 +13,13 @@
 </head>
 <body>
     <h1>Game</h1>
-    <div id="coins-display">Coins: <span id="coins">0</span></div>
     <canvas id="gameCanvas" width="800" height="600"></canvas>
 
     <script>
-        let coins = parseInt(localStorage.getItem('coins')) || 0;
-        const coinsDisplay = document.getElementById('coins');
-
-        // Funkcija za dodavanje novčića
-        function addCoin() {
-            coins++;
-            localStorage.setItem('coins', coins);
-            coinsDisplay.textContent = coins;
-        }
-
-        // Inicijalno prikazivanje broja novčića
-        coinsDisplay.textContent = coins;
-
         // Simulacija ubijanja neprijatelja
         document.addEventListener('keydown', (event) => {
             if (event.key === 'k') { // Pritisak na 'k' simbolizira ubijanje neprijatelja
-                addCoin();
-                alert('You killed an enemy and earned a coin!');
+                alert('You killed an enemy!');
             }
         });
     </script>
