@@ -32,8 +32,14 @@ const enemySpawnTime = 1000;
 
 // Rezultat
 let score = 0;
-let lives = 5; // Početni broj života
-let isGameOver = false; // Prati da li je igra gotova
+let lives = 5;  // Početni broj života
+let isGameOver = false;  // Prati da li je igra gotova
+
+// Funkcija za stvaranje neprijatelja
+function spawnEnemy() {
+    const enemyX = Math.random() * (WIDTH - enemySize);
+    enemies.push({ x: enemyX, y: -enemySize, type: "normal", direction: Math.random() > 0.5 ? 1 : -1 });
+}
 
 // Funkcija za crtanje teksta
 function drawText(text, x, y, color = COLORS.WHITE) {
@@ -51,12 +57,6 @@ function drawHeart(x, y, size) {
     ctx.closePath();
     ctx.fillStyle = COLORS.RED;
     ctx.fill();
-}
-
-// Funkcija za stvaranje neprijatelja
-function spawnEnemy() {
-    const enemyX = Math.random() * (WIDTH - enemySize);
-    enemies.push({ x: enemyX, y: -enemySize, type: "normal", direction: Math.random() > 0.5 ? 1 : -1 });
 }
 
 // Glavna funkcija za ažuriranje stanja igre
@@ -97,8 +97,8 @@ function update() {
         enemy.y += enemySpeed[enemy.type];
         if (enemy.y > HEIGHT) {
             enemies.splice(i, 1);
-            lives--; // Oduzimanje života
-            if (lives <= 0) isGameOver = true; // Ako nemaš više života, završava igru
+            lives--;  // Oduzimanje života
+            if (lives <= 0) resetGame();  // Ako nemaš više života, resetuj igru
         }
     }
 
@@ -140,7 +140,7 @@ function update() {
 
     // Prikaz života
     for (let i = 0; i < lives; i++) {
-        drawHeart(10 + i * 40, 80, 20); // Crta srca za živote
+        drawHeart(10 + i * 40, 80, 20);  // Crta srca za živote
     }
 }
 
@@ -151,13 +151,7 @@ window.addEventListener("keyup", e => keys[e.key] = false);
 
 // Funkcija za resetovanje igre
 function resetGame() {
-    isGameOver = false;
-    lives = 5;
-    score = 0;
-    enemies.length = 0;
-    bullets.length = 0;
-    playerX = WIDTH / 2;
-    gameLoop();
+    isGameOver = true;  // Postavlja igru kao završenu
 }
 
 // Glavna petlja igre
@@ -170,4 +164,3 @@ function gameLoop() {
 
 // Pokretanje igre
 gameLoop();
-
