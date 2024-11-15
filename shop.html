@@ -1,93 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shop</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f4f4f9;
-            margin: 0;
-            padding: 20px;
-        }
-
-        .shop-item {
-            display: inline-block;
-            margin: 20px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            width: 200px;
-            background-color: #fff;
-            padding: 15px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        }
-
-        .shop-item h3 {
-            font-size: 20px;
-            margin-bottom: 10px;
-        }
-
-        .shop-item button {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            font-size: 14px;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-
-        .shop-item button:hover {
-            background-color: #45a049;
-        }
-
-        .coins-display {
-            margin-bottom: 20px;
-            font-size: 18px;
-            font-weight: bold;
-        }
+        body { font-family: Arial, sans-serif; text-align: center; background-color: #f0f0f0; }
+        #shop { margin-top: 50px; }
+        button { padding: 10px 20px; font-size: 16px; cursor: pointer; }
+        #coinsDisplay { margin-top: 20px; font-size: 20px; }
     </style>
 </head>
 <body>
     <h1>Shop</h1>
-    <div class="coins-display">Coins: <span id="coins">100</span></div>
-
-    <!-- Item 1 -->
-    <div class="shop-item">
-        <h3>AddHeart</h3>
-        <p>Item 30 coins</p>
-        <button onclick="buyItem(30, 'AddHeart')">Buy</button>
+    <div id="shop">
+        <button id="buyLife">Buy Life (50 coins)</button>
+        <button id="buySpeed">Buy Speed (30 coins)</button>
+        <div id="coinsDisplay">Coins: 0</div>
     </div>
-
-    <!-- Item 2 -->
-    <div class="shop-item">
-        <h3>20xSpeed</h3>
-        <p>Item 50 coins</p>
-        <button onclick="buyItem(50, '20xSpeed')">Buy</button>
-    </div>
-
-    <!-- Item 3 -->
-    <div class="shop-item">
-        <h3>Sheld_10</h3>
-        <p>Item 70 coins</p>
-        <button onclick="buyItem(70, 'Sheld_10')">Buy</button>
-    </div>
-
-    <script>
-        let coins = 100;
-
-        function buyItem(cost, itemName) {
-            if (coins >= cost) {
-                coins -= cost;
-                document.getElementById('coins').textContent = coins;
-                alert(`You bought ${itemName}!`);
-            } else {
-                alert('Not enough coins!');
-            }
-        }
-    </script>
+    <script src="shop.js"></script>
 </body>
 </html>
