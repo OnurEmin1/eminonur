@@ -1,5 +1,5 @@
 // Učitavanje broja novčića iz localStorage
-let coins = parseInt(localStorage.getItem('coins')) || 0;
+let coins = parseInt(localStorage.getItem('coins')) || 100;
 const coinsDisplay = document.getElementById('coinsDisplay');
 
 // Funkcija za ažuriranje broja novčića na ekranu
