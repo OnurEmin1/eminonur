@@ -1,4 +1,3 @@
-// Game JavaScript code
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 
@@ -53,24 +52,24 @@ function drawText(text, x, y, color = COLORS.WHITE) {
 function drawHeart(x, y, size) {
     ctx.beginPath();
     ctx.moveTo(x, y);
-    ctx.bezierCurveTo(x - size / 2, y - size / size, x - size, y + size / 2, x, y + size);
+    ctx.bezierCurveTo(x - size / 2, y - size / 2, x - size, y + size / 2, x, y + size);
     ctx.bezierCurveTo(x + size, y + size / 2, x + size / 2, y - size / 2, x, y);
     ctx.closePath();
     ctx.fillStyle = COLORS.RED;
     ctx.fill();
 }
 
-// Funkcija za čuvanje rezultata u localStorage
-function saveScore() {
-    const highestScore = localStorage.getItem('highestScore') || 0;
-    if (score > highestScore) {
-        localStorage.setItem('highestScore', score);  // Čuva novi najviši rezultat
-    }
-}
-
-// Funkcija za učitavanje najvišeg rezultata iz localStorage
+// Funkcija za učitavanje najvišeg rezultata
 function loadHighestScore() {
     return parseInt(localStorage.getItem('highestScore')) || 0;
+}
+
+// Funkcija za čuvanje najvišeg rezultata
+function saveHighestScore() {
+    const highestScore = loadHighestScore();
+    if (score > highestScore) {
+        localStorage.setItem('highestScore', score);
+    }
 }
 
 // Glavna funkcija za ažuriranje stanja igre
@@ -79,7 +78,6 @@ function update() {
 
     // Prikaz "GAME OVER" ako su životi 0
     if (isGameOver) {
-        saveScore();  // Spremi rezultat kada igra završi
         ctx.fillStyle = COLORS.RED;
         ctx.font = "48px Arial";
         ctx.textAlign = "center";
@@ -167,6 +165,7 @@ window.addEventListener("keyup", e => keys[e.key] = false);
 
 // Funkcija za resetovanje igre
 function resetGame() {
+    saveHighestScore();  // Čuvanje najvišeg rezultata
     isGameOver = true;  // Postavlja igru kao završenu
 }
 
