@@ -5,6 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AuShoot</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Stil za UPDATE dugme */
+        #updateButton {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        #updateButton:hover {
+            background-color: #0056b3;
+        }
+
+        /* Stil za UPDATE ekran */
+        #updateScreen {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            font-size: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -16,58 +52,10 @@
             <a href="#" style="color: white;">Version of game's</a>
             <br>
             <div class="relative-container">
-    <a href="#" style="color: white;" onclick="openNewWindow();">version 1.1</a>
-    <button onclick="openShop();" class="big-button" style="position: absolute; left: 500px;">Shop</button>
-</div>
-
+                <a href="#" style="color: white;" onclick="openNewWindow();">version 1.1</a>
+                <button onclick="openShop();" class="big-button" style="position: absolute; left: 500px;">Shop</button>
+            </div>
         </aside>
-
-        <script>
-            function openNewWindow() {
-                // Otvorite game.html u novom prozoru
-                window.open('game.html', '_blank', 'width=800,height=600');
-            }
-
-            function openShop() {
-                // Otvara sliku u novom prozoru
-                window.open('shop.html', '_blank', 'width=600,height=400');
-            }
-        </script>
-
-        <style>
-            aside a {
-                color: white;
-            }
-
-            /* Stil za dugme */
-            button {
-                background-color: #4CAF50; /* Zelena boja */
-                color: white;
-                border: none;
-                border-radius: 100px; 
-                gap: 400px; 
-                transition: background-color 0.3s, transform 0.2s;
-            }
-
-            .big-button {
-                padding: 35px 60px; /* Povećano unutar dugmeta */
-                font-size: 28px; /* Povećan font */
-                font-weight: bold; /* Podebljan tekst */
-                cursor: pointer;
-            }
-
-            .big-button:hover {
-                background-color: #45a049; /* Tamnija zelena na hover */
-                transform: scale(1.1); /* Efekat povećanja na hover */
-            }
-
-            /* Stil za konteiner */
-            .inline-container {
-                display: flex;
-                align-items: center;
-                gap: 20px; /* Razmak između elemenata */
-            }
-        </style>
 
         <canvas id="gameCanvas" width="800" height="600"></canvas>
         
@@ -76,9 +64,39 @@
             <p>Version 1.2 is coming soon...</p>
             <img src="slika 2 version 1.1.png" alt="Update Image" class="update-image">
             <h2>UPDATE 2</h2>
-          <p>The new thing in AuShoot is that the colors in the game have been changed.</p>
-          <img src="slika 111.png" alt="Update Image" class="update-image">
+            <p>The new thing in AuShoot is that the colors in the game have been changed.</p>
+            <img src="slika 111.png" alt="Update Image" class="update-image">
         </section>
     </main>
+
+    <!-- UPDATE Button -->
+    <button id="updateButton">UPDATE</button>
+
+    <!-- UPDATE Screen -->
+    <div id="updateScreen">UPDATE...</div>
+
+    <script>
+        // Funkcija za otvaranje game.html
+        function openNewWindow() {
+            window.open('game.html', '_blank', 'width=800,height=600');
+        }
+
+        // Funkcija za otvaranje shop.html
+        function openShop() {
+            window.open('shop.html', '_blank', 'width=600,height=400');
+        }
+
+        // Funkcionalnost UPDATE dugmeta
+        const updateButton = document.getElementById('updateButton');
+        const updateScreen = document.getElementById('updateScreen');
+
+        updateButton.addEventListener('click', () => {
+            updateScreen.style.display = 'flex';
+        });
+
+        updateScreen.addEventListener('click', () => {
+            updateScreen.style.display = 'none';
+        });
+    </script>
 </body>
 </html>
