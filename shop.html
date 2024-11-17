@@ -1,23 +1,100 @@
 <!DOCTYPE html>
-<html lang="hr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shop</title>
+    <title>Cube Shop</title>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; background-color: #f0f0f0; }
-        #shop { margin-top: 50px; }
-        button { padding: 10px 20px; font-size: 16px; cursor: pointer; }
-        #coinsDisplay { margin-top: 20px; font-size: 20px; }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f9;
+        }
+
+        #coinsDisplay {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            margin: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+
+        #buyDarkBlueCube {
+            background-color: #1e90ff;
+            color: white;
+        }
+
+        #buyDarkBlueCube:hover {
+            background-color: #1c86ee;
+        }
+
+        #buyOrangeCube {
+            background-color: #ffa500;
+            color: white;
+        }
+
+        #buyOrangeCube:hover {
+            background-color: #ff8c00;
+        }
+
+        #gameCube {
+            width: 100px;
+            height: 100px;
+            background-color: gray; /* Default boja */
+            margin-top: 20px;
+            border: 2px solid black;
+        }
     </style>
 </head>
 <body>
-    <h1>Shop</h1>
-  <div id="coinsDisplay"></div>
-<button id="buyDarkBlueCube">Buy Dark Blue Cube</button>
-<button id="buyOrangeCube">Buy Orange Cube</button>
-<div id="gameCube" style="width: 100px; height: 100px; background-color: gray;"></div>
+    <div id="coinsDisplay">Coins: 0</div>
+    <button id="buyDarkBlueCube">Buy Dark Blue Cube</button>
+    <button id="buyOrangeCube">Buy Orange Cube</button>
+    <div id="gameCube"></div>
 
-    <script src="shop.js"></script>
+    <script>
+        // Učitavanje broja novčića iz localStorage
+        let coins = parseInt(localStorage.getItem('coins')) || 0;
+        const coinsDisplay = document.getElementById('coinsDisplay');
+
+        // Funkcija za ažuriranje broja novčića na ekranu
+        function updateCoinsDisplay() {
+            coinsDisplay.textContent = `Coins: ${coins}`;
+            localStorage.setItem('coins', coins); // Čuvanje novčića u localStorage
+        }
+
+        // Funkcija za postavljanje boje kocke
+        function setCubeColor() {
+            const cubeColor = localStorage.getItem('cubeColor') || 'gray'; // Default boja
+            const gameCube = document.getElementById('gameCube');
+            gameCube.style.backgroundColor = cubeColor;
+        }
+
+        // Funkcija za kupovinu tamno plave kocke (besplatno)
+        document.getElementById('buyDarkBlueCube').addEventListener('click', function () {
+            localStorage.setItem('cubeColor', 'darkblue');
+            alert('You bought a DARK-BLUE Cube!');
+            updateCoinsDisplay();
+            setCubeColor(); // Primeni novu boju
+        });
+
+        // Funkcija za kupovinu narančaste kocke (besplatno)
+        document.getElementById('buyOrangeCube').addEventListener('click', function () {
+            localStorage.setItem('cubeColor', 'orange');
+            alert('You bought an ORANGE Cube!');
+            updateCoinsDisplay();
+            setCubeColor(); // Primeni novu boju
+        });
+
+        // Inicijalno ažuriraj prikaz novčića i boju kocke
+        updateCoinsDisplay();
+        setCubeColor();
+    </script>
 </body>
 </html>
