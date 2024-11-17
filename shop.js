@@ -8,12 +8,18 @@ function updateCoinsDisplay() {
     localStorage.setItem('coins', coins); // Čuvanje novčića u localStorage
 }
 
+
 // Funkcija za kupovinu tamno plave kocke (besplatno)
 document.getElementById('buyDarkBlueCube').addEventListener('click', function() {
     // Postavljamo boju kocke u localStorage
     localStorage.setItem('cubeColor', 'darkblue');
     alert('You bought a DARK-BLUE Cube!');
-    updateCoinsDisplay(); // Ažuriraj prikaz novčića (ako želiš da prikazuješ broj)
+    updateCoinsDisplay();
+    
+documenr.getElementById('buyOrangecube').addEventListener('click',function() {
+    localSortage.setItem('cubeColor','orange');
+    alert('You bought a Orange cube!');
+    updateCointsDisplay();
 });
 
 // Inicijalno ažuriraj prikaz novčića
