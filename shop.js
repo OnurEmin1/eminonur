@@ -16,7 +16,7 @@ document.getElementById('buyDarkBlueCube').addEventListener('click', function() 
     alert('You bought a DARK-BLUE Cube!');
     updateCoinsDisplay();
     
-documenr.getElementById('buyOrangecube').addEventListener('click',function() {
+document.getElementById('buyOrangecube').addEventListener('click',function() {
     localSortage.setItem('cubeColor','orange');
     alert('You bought a Orange cube!');
     updateCointsDisplay();
