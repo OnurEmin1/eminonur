@@ -8,16 +8,13 @@
 /* Postavlja tamno sivu pozadinsku boju za celu stranicu */
 /* Postavlja tamno sivu pozadinsku boju za celu stranicu */
 /* Generalni stilovi za cijeli dokument */
-/* Stil za telo */
-/* Postavlja bijelu pozadinsku boju za cijelu stranicu */
 body {
-    background-color: #fff;  /* Bijela pozadina */
-    color: #333;             /* Bijeli tekst */
+    background-color: #333;  /* Tamno siva pozadina */
+    color: #fff;             /* Bijeli tekst */
     font-family: Arial, sans-serif;  /* Opcionalno, odabrani font */
     margin: 0;
     padding: 0;
 }
-
 
 h1, h2, p {
     color: #fff;  /* Bijeli tekst za sve naslove i paragrafe */
@@ -136,5 +133,3 @@ section p {
     line-height: 1.5;
     font-size: 30px; /* Povećana veličina fonta za tekst u "UPDATE" sekciji */
 }
-
-
